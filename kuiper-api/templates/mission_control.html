@@ -1,0 +1,14 @@
+{%extends "base.html"%}
+{% block includes %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/keyProcess.js') }}"></script>
+{%endblock%}
+
+{%block title %}Login Page{%endblock%}
+{%block content%}
+
+<h1>Mission Control</h1>
+<p>This is where you can control the robot with your keys and buttons</p>
+<p>The key pressed is </p>
+<h1 id= key> </p>
+{%endblock%}
