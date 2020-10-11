@@ -6,10 +6,10 @@ import urllib.request
 
 # Define the set of actions
 actions = {
-        'w': [100,100, 50],
-        'a': [100,15,50],
-        'd': [15,100,50],
-        's': [0,0,0]
+        '87' [100,100, 50],
+        '65': [100,15,50],
+        '68': [15,100,50],
+        '83': [0,0,0]
         }
 
 class RobotTeleopPublisher(Node):
@@ -50,15 +50,8 @@ class RobotTeleopPublisher(Node):
         action = [0,0,0]
         
         try:
-            if(data[15:17]=='87'):
-                if verbose: print('w')
-                action = actions['w']
-            elif (data[15:17]=='65'):
-                if verbose: print('a')
-                action = actions['a']
-            elif (data[15:17]=='68'):
-                if verbose: print('d')
-                action = actions['d']
+            action = actions[data[15:17]]
+            print(data[15:17])
         except:
             pass
 

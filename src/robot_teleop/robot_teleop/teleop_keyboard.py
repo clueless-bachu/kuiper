@@ -25,10 +25,15 @@ def getKey():
     return key
 
 actions = {
-        'w': [100,100, 50],
-        'a': [100,15,50],
-        'd': [15,100,50],
-#        's': [0,0,0]
+        'w': [100,100, 3],
+        'q': [100,15,3],
+        'e': [15,100,3],
+        'a': [50,-50,3],
+        'd': [-50,50,3],
+        's': [0,0,100],
+        'x': [-100, -100, 3],
+        'z': [-100,-15,3],
+        'c': [-15, -100, 3]
         }
 
 class RobotTeleopPublisher(Node):
@@ -62,6 +67,8 @@ class RobotTeleopPublisher(Node):
         '''
         msg = RobotSpeed()
         key = getKey()
+
+        if key == 'p': exit(0)
         try:
            msg.rspeed = actions[key][0]
            msg.lspeed = actions[key][1]

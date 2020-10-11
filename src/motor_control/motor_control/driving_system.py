@@ -7,27 +7,24 @@ from robot_msgs.msg import RobotSpeed
 from .motor_controller import *
 
 class RobotSpeedSubscriber(Node):
-	'''
-		A subscriber class reads the topic values as sets the robot speed
+    '''
+    A subscriber class reads the topic values as sets the robot speed
     '''
     def __init__(self):
-    	'''
-		Initializes the ROS2 node
-		Inputs:
-		 None
-
-		Return: 
-		 None
-		'''
+        '''
+        Initializes the ROS2 node
+        Inputs: None
+        Return: None
+        '''
         super().__init__('robot_speed__subscriber')
 
         pins = {}
         # sets the Pin value to  Kuiper Bot 
         # Change if using for another robot
-        pins['fr'] =  [25, 24, 18]
-        pins['fl'] =  [27, 22, 4]
-        pins['br'] =  [12, 20, 21]
-        pins['bl'] =  [6, 5, 26]
+        pins['fr'] =  [24, 25, 18]
+        pins['fl'] =  [22, 27, 4]
+        pins['br'] =  [20, 12, 21]
+        pins['bl'] =  [5, 6, 26]
 
         
         self.driver = MotorSystem(pins)
@@ -41,16 +38,16 @@ class RobotSpeedSubscriber(Node):
         self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg):
-    	'''
-		Callback function
-		Inputs:
-		 None
+        '''
+                Callback function
+                Inputs:
+                 None
 
-		Return: 
-		 None
-		'''
+                Return: 
+                 None
+        '''
         verbose = True
-		if verbose: print("Left Speed: {} Right Speed: {}".format(msg.lspeed, msg.rspeed))
+        if verbose: print("Left Speed: {} Right Speed: {}".format(msg.lspeed, msg.rspeed))
         self.driver.setSpeed(np.array([msg.rspeed, msg.lspeed]), msg.steps)
 
 
