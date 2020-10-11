@@ -6,10 +6,10 @@ import urllib.request
 
 # Define the set of actions
 actions = {
-        '87' [100,100, 50],
-        '65': [100,15,50],
-        '68': [15,100,50],
-        '83': [0,0,0]
+        '87' [100,100, 3],
+        '65': [100,15,3],
+        '68': [15,100,3],
+        '83': [-100,-100,3]
         }
 
 class RobotTeleopPublisher(Node):
