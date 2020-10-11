@@ -6,7 +6,7 @@ import urllib.request
 
 # Define the set of actions
 actions = {
-        '87' [100,100, 3],
+        '87': [100,100, 3],
         '65': [100,15,3],
         '68': [15,100,3],
         '83': [-100,-100,3]
