@@ -26,22 +26,34 @@ function checkKeyPress(key)
 	var letter = key.keyCode;
 	if(letter =="65")
 	{
-		changeText("a");
+		changeText("moving left");
 	}
 	else if(letter =="87")
 	{
-		changeText("w");
+		changeText("moving forward");
 	}
-	if(letter =="68")
+	else if(letter =="68")
 	{
-		changeText("d");
+		changeText("moving right");
 	}
 	else if(letter =="83")
 	{
-		changeText("s");
+		changeText("braking");
+	}
+	else if(letter =="88")
+	{
+		changeText("moving backwards");
+	}
+	else if(letter =="90")
+	{
+		changeText("Moving back-left");
+	}
+	else if(letter == "67")
+	{
+		changeText("Moving back-right");
 	}
 
-	console.log(n - process_time);
+	
 	if(n - process_time>1000) {
 		$.ajax({
 		url: urll,
@@ -59,7 +71,7 @@ function resetKey(key) {
 
 	// If key is released, it changes the display on the webpage and 
 	// sends the POST command to the main Flask server
-	changeText(" ")
+	changeText("Not Moving")
 	$.ajax({
 		url: urll,
             type: "POST",
