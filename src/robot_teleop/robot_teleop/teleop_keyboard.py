@@ -24,16 +24,15 @@ def getKey():
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
     return key
 
+mxjump = 10
 actions = {
-        'w': [100,100, 3],
-        'q': [100,15,3],
-        'e': [15,100,3],
-        'a': [50,-50,3],
-        'd': [-50,50,3],
+        'w': [100,100, mxjump],
+        'a': [100,15,mxjump],
+        'd': [15,100,mxjump],
         's': [0,0,100],
-        'x': [-100, -100, 3],
-        'z': [-100,-15,3],
-        'c': [-15, -100, 3]
+        'x': [-100, -100, mxjump],
+        'z': [-100,-15,mxjump],
+        'c': [-15, -100, mxjump]
         }
 
 class RobotTeleopPublisher(Node):

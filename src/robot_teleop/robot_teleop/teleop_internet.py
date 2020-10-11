@@ -50,7 +50,7 @@ class RobotTeleopPublisher(Node):
         msg = RobotSpeed()
         url = urllib.request.urlopen('http://35.236.229.125/key_parser')
         data = str(url.read())
-        action = [0,0,0]
+        action = [0,0,3]
         
         try:
             action = actions[data[15:17]]
