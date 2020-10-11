@@ -1,12 +1,19 @@
+# Import libraries
 import rclpy
 from rclpy.node import Node
-
 from robot_msgs.msg import RobotSpeed
 import sys, select, termios, tty
 
 settings = termios.tcgetattr(sys.stdin)
-
 def getKey():
+    '''
+    retrieves the key pressed on the keyboard. Courtesy Willow Garage.
+    Inputs:
+         None
+
+    Return: 
+     None
+    '''
     tty.setraw(sys.stdin.fileno())
     rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
     if rlist:
@@ -24,17 +31,35 @@ actions = {
 #        's': [0,0,0]
         }
 
-
-
 class RobotTeleopPublisher(Node):
-
+    '''
+    A ROS2 Node for publishing speed data which is accessed using the Keyboard
+    '''
     def __init__(self):
+        '''
+        Initializes the publisher
+        Inputs:
+         None
+
+        Return: 
+         None
+        '''
         super().__init__('robot_teleop_publisher')
         self.publisher_ = self.create_publisher(RobotSpeed, 'robot_speed', 1)
+        # interval time at which call back function is called
         timer_period = 0.00001  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback) 
 
     def timer_callback(self):
+        '''
+        Callback function. This accesses the keyboard using getKey() for speed commands and
+        publishes to the robot_speed topic
+         Inputs:
+         None
+
+        Return: 
+         None
+        '''
         msg = RobotSpeed()
         key = getKey()
         try:
@@ -50,8 +75,9 @@ class RobotTeleopPublisher(Node):
 
 
 def main(args=None):
+    # Intializes Node
     rclpy.init(args=args)
-
+    # creates publisher class
     robot_teleop_publisher = RobotTeleopPublisher()
 
     rclpy.spin(robot_teleop_publisher)

@@ -1,4 +1,4 @@
-
+#import all required libraries
 import rclpy
 from rclpy.node import Node
 import RPi.GPIO as gpio
@@ -7,12 +7,23 @@ from robot_msgs.msg import RobotSpeed
 from .motor_controller import *
 
 class RobotSpeedSubscriber(Node):
-
+	'''
+		A subscriber class reads the topic values as sets the robot speed
+    '''
     def __init__(self):
+    	'''
+		Initializes the ROS2 node
+		Inputs:
+		 None
+
+		Return: 
+		 None
+		'''
         super().__init__('robot_speed__subscriber')
 
         pins = {}
-
+        # sets the Pin value to  Kuiper Bot 
+        # Change if using for another robot
         pins['fr'] =  [25, 24, 18]
         pins['fl'] =  [27, 22, 4]
         pins['br'] =  [12, 20, 21]
@@ -30,14 +41,23 @@ class RobotSpeedSubscriber(Node):
         self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg):
-        print(msg.lspeed, msg.rspeed, msg.steps)
+    	'''
+		Callback function
+		Inputs:
+		 None
+
+		Return: 
+		 None
+		'''
+        verbose = True
+		if verbose: print("Left Speed: {} Right Speed: {}".format(msg.lspeed, msg.rspeed))
         self.driver.setSpeed(np.array([msg.rspeed, msg.lspeed]), msg.steps)
 
 
 def main(args=None):
-    
+    # Intializes Node
     rclpy.init(args=args)
-
+    # creates subscriber class
     robot_speed_subscriber = RobotSpeedSubscriber()
     print("Node will start accepting robot speeds")
     rclpy.spin(robot_speed_subscriber)

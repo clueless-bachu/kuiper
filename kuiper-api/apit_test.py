@@ -1,3 +1,5 @@
+# A simlpe testing code to see if API is working
+
 import requests
 import json
 from time import sleep
