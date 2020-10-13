@@ -72,7 +72,7 @@ c: Turn right while moving backwards
 The robot is a 4 wheel drive controlled by two L298N motor driver driving two motors each. The motor driver is controlled by a single Raspberry Pi. The system is powered by a single 11.1V LiPo battery with a power distribution circuit and 12V to 5V buck converter to power the onboard computer.
 
 ## Additional Description
-YouTube Link: https://www.youtube.com/watch?v=nv5OmhN1pKg:wq
+YouTube Link: https://www.youtube.com/watch?v=IYt_oSYRyNA
 
 
 Devpost Descrioption: https://devpost.com/software/kuiperbot
