@@ -26,11 +26,11 @@ def getKey():
 
 mxjump = 10
 actions = {
-        'w': [100,100, mxjump],
+        'w': [100,94, mxjump],
         'a': [100,15,mxjump],
         'd': [15,100,mxjump],
         's': [0,0,100],
-        'x': [-100, -100, mxjump],
+        'x': [-100, -87, mxjump],
         'z': [-100,-15,mxjump],
         'c': [-15, -100, mxjump]
         }
