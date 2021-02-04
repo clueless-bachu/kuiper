@@ -3,8 +3,10 @@ A robot that can be controlled from anywhere in the world via the internet
 
 
 ## Installation
-Download the entire repository
+Create a ROS2 package and Download the entire repository
 ```
+$ mkdir -p <name of workspace>/src
+$ cd <name of workspace>/src
 $ git clone https://github.com/clueless-bachu/Kuiper-Bot.git
 ```
 
