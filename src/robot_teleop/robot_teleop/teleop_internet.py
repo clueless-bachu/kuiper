@@ -1,3 +1,8 @@
+'''
+Author: Vasista Ayyagari
+File Description: Reads the motion commands from the Kuiper API and publishes it to the ROS network
+Copyright: Vasista Ayyagari, 2021
+'''
 # Import libraries
 import rclpy
 from rclpy.node import Node

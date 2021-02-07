@@ -1,3 +1,9 @@
+'''
+Author: Vasista Ayyagari
+File Description: Creates a Node that reads movement commands from the keyboard and publishes it to the ROS network
+Copyright: Vasista Ayyagari, 2021
+'''
+
 # Import libraries
 import rclpy
 from rclpy.node import Node

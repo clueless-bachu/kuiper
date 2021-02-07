@@ -1,3 +1,9 @@
+'''
+Author: Vasista Ayyagari
+File Description: A helper file with Classes for Motor control to drive the robot
+Copyright: Vasista Ayyagari, 2021
+'''
+
 # importing required libraries
 import RPi.GPIO as gpio
 import numpy as np

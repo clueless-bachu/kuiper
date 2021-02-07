@@ -1,3 +1,9 @@
+'''
+Author: Vasista Ayyagari
+File Description: Creates a Node for receiving motor commands and Applying them to the motors
+Copyright: Vasista Ayyagari, 2021
+'''
+
 #import all required libraries
 import rclpy
 from rclpy.node import Node
