@@ -2,26 +2,25 @@
 A robot that can be controlled from anywhere in the world via the internet
 
 
-## Installation
-Create a ROS2 package and Download the entire repository
+## Download and Installation of Source files in the ROS system
+Download the entire repository, no need to make a complete workspace. This is a workspace on its own. build the files and source it
 ```
-$ mkdir -p <name of workspace>/src
-$ cd <name of workspace>/src
 $ git clone https://github.com/clueless-bachu/Kuiper-Bot.git
-```
-
-Add the source files to your ROS2 workspace and build it
-```
-$ cd <name of workspace>
 $ colcon build 
 $ . install/setup.bash
 ```
 
 You can optionally add the Kuiper API, a flask app to your web dev project or use it as a standalone app by hosting it using a server.
 
+## Download the API into your hosting platform
+Download the kuiper-api to use it in your hosting platform
+```
+$ git clone https://github.com/clueless-bachu/Kuiper-Bot.git
+```
+
 ## Edit
 
-Make changes to the IP address in ``` src/robot_teleop/robot_teleop/teleop_internet.py``` to the appropriate IP address of the hosted API
+Make changes to the IP address in ``` src/robot_teleop/robot_teleop/teleop_internet.py``` and ``` src/intel_camera/intel_camera/post_img.py```  to the appropriate IP address of the hosted API. Finally make changes to the IP address mentioned in ```kuiper-api/static/js/keyProcess.js``` to the IP address of your server
 
 Additionally, make changes to ```kuiper-api/kuiper.py``` and change the login credentials to name
 
@@ -31,22 +30,15 @@ Change the pins in ```Kuiper-Bot\src\motor_control\motor_control\driving_system.
 
 In you hosting platform, you can simply run ```kuiper.py```
 ```
+$ cd kuiper/kuiper-api
 $ sudo python kuiper.py
 or
 $ sudo python3 kuiper.py
 ```
 
-To run the robot, open different terminals and run the following commands
+To run the robot, in a terminal run the following launch file. This will call all the nodes required to communicate with the kuiper-api and control the robot remotely
 ```
-Terminal 1
-$ . install/setup.bash
-$ ros2 run motor_control driver
-
-Terminal 2
-$ . install/setup.bash
-$ ros2 run robot_teleop teleop_internet (This is to control the robot using the API)
-or
-$ ros2 run robot_teleop teleop_keyboard (This is to control the robot using the Keyboard)
+$ ros2 launch robot_teleop remote_teleop.py
 ```
 
 ## Teleop Controls
