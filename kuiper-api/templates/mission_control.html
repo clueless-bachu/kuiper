@@ -4,11 +4,17 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/keyProcess.js') }}"></script>
 {%endblock%}
 
-{%block title %}Login Page{%endblock%}
 {%block content%}
 
 <h1>Mission Control</h1>
 <p>This is where you can control the robot with your keys and buttons</p>
 <p>The key pressed is </p>
-<h1 id= key> </p>
+<p id= key> </p>
+
+<div class="container">
+    <div class="row">
+            <center><img src="{{ url_for('video_feed') }}" width="50%"></center>
+            <p class="mt-5">Live Stream From Kuiper</p>
+    </div>
+</div>
 {%endblock%}
