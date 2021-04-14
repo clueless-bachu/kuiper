@@ -3,7 +3,7 @@ window.addEventListener("keydown", checkKeyPress, false);
 window.addEventListener("keyup", resetKey, false);
 
 // Appropriaterly set the URL
- urll = "http://35.236.229.125/mission_key"
+ urll = "http://127.0.0.1:5000/mission_key"
 // urll = "http://127.0.0.1:5000/mission_key"
 
 // To limit the number of API POST commands, the code keeps track of time and allows posts at 1Hz
@@ -46,11 +46,11 @@ function checkKeyPress(key)
 	}
 	else if(letter =="90")
 	{
-		changeText("Moving back-left");
+		changeText("moving back-left");
 	}
 	else if(letter == "67")
 	{
-		changeText("Moving back-right");
+		changeText("moving back-right");
 	}
 
 	
@@ -71,7 +71,7 @@ function resetKey(key) {
 
 	// If key is released, it changes the display on the webpage and 
 	// sends the POST command to the main Flask server
-	changeText("Not Moving")
+	changeText("not moving")
 	$.ajax({
 		url: urll,
             type: "POST",
