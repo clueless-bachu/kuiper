@@ -45,14 +45,14 @@ class RobotSpeedSubscriber(Node):
 
     def listener_callback(self, msg):
         '''
-                Callback function
-                Inputs:
-                 None
+        Callback function
+        Inputs:
+            None
 
-                Return: 
-                 None
+        Return: 
+            None
         '''
-        verbose = True
+        verbose = False
         if verbose: print("Left Speed: {} Right Speed: {}".format(msg.lspeed, msg.rspeed))
         self.driver.setSpeed(np.array([msg.rspeed, msg.lspeed]), msg.steps)
 

@@ -8,6 +8,7 @@ import rclpy
 from rclpy.node import Node
 from robot_msgs.msg import RobotSpeed
 import urllib.request
+import requests
 
 # Define the set of actions
 actions = {
@@ -24,7 +25,7 @@ class RobotTeleopPublisher(Node):
     '''
     A ROS2 Node for publishing speed data which is accessed using the Kuiper API 
     '''
-    def __init__(self):
+    def __init__(self, url, route):
         '''
         Initializes the publisher
         Inputs:
@@ -35,7 +36,9 @@ class RobotTeleopPublisher(Node):
         '''
         super().__init__('robot_teleop_publisher')
         self.publisher_ = self.create_publisher(RobotSpeed, 'robot_speed', 1)
-        print("Starteing to recieve messages!!")
+
+        self.url = "http://"+url+route
+        print("Starting to recieve messages!!")
         # interval time at which call back function is called
         timer_period = 0.1  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
@@ -51,16 +54,15 @@ class RobotTeleopPublisher(Node):
          None
         '''
 
-        verbose = True
         msg = RobotSpeed()
-        url = urllib.request.urlopen('http://35.236.229.125/key_parser')
-        data = str(url.read())
+#        url = urllib.request.urlopen(self.url)
+        r = requests.get(url = self.url)
+        data = str(r.json()['response'])
         action = [0,0,3]
         
         try:
-            action = actions[data[15:17]]
-            print(data[15:17])
-        except:
+            action = actions[data]
+        except Exception as e:
             pass
 
 
@@ -77,7 +79,9 @@ def main(args=None):
     # Intializes Node
     rclpy.init(args=args)
     # creates publisher class
-    robot_teleop_publisher = RobotTeleopPublisher()
+    url = "192.168.43.16:5000/"
+    route = "key_parser"
+    robot_teleop_publisher = RobotTeleopPublisher(url, route)
 
     rclpy.spin(robot_teleop_publisher)
 

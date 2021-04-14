@@ -45,10 +45,14 @@ class TrackCamImgSub(Node):
         '''
         try:
             cv_image = self.bridge.imgmsg_to_cv2(msg, "8UC1")
+            print(cv_image.shape)
             cv2.imshow("Intel Left Camera View", cv_image)
             cv2.waitKey(3)
         except CvBridgeError as e:
             print(e)
+
+    def __del__():
+        print("-----------Stopping viewing of the Video----------")
 
 
 

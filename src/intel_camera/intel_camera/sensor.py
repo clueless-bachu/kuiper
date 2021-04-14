@@ -94,6 +94,7 @@ class SensorPublisher(Node):
         Return: None
         '''
         super().__init__('sensor_publisher')
+        self.get_logger().info('node starter------------------')
         self.pose_pub = self.create_publisher(Pose2D, 'pose2D_robot', 10)
         self.img_pub = self.create_publisher(Image, 'cam_image_robot', 1)
         pose_timer_period = 0.5 
@@ -151,7 +152,7 @@ class SensorPublisher(Node):
     def pose_timer_callback(self):
         '''
         A callback function to regularly publish the position data
-
+        INCOMPLETE IMPLEMENTATION -> PLEASE COMPLETE 
         Input:
         None
 
@@ -217,7 +218,8 @@ def main(args=None):
     rclpy.init(args=args)
 
     sensor_publisher = SensorPublisher()
-
+    sensor_publisher.get_logger().info('Camera is Ready!!')
+    
     rclpy.spin(sensor_publisher)
 
     # Destroy the node explicitly

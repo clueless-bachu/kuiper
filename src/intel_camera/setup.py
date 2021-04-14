@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             'sensor = intel_camera.sensor:main',
-            'view_cam = intel_camera.view_cam:main'
+            'view_cam = intel_camera.view_cam:main',
+            'post_img = intel_camera.post_img:main'
         ],
     },
 )
