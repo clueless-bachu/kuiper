@@ -44,10 +44,10 @@ class ImgPostSub(Node):
         Returns:
         None
         '''
-        sleep(0.2)
+        sleep(0.01)
         try:
             cam_image = self.bridge.imgmsg_to_cv2(msg, "8UC1")
-            cam_image = cv2.resize(cam_image, (100,100))
+#            cam_image = cv2.resize(cam_image, (100,100))
             buffer = cv2.imencode('.jpg', cam_image)[1].T
             r = requests.post(url = self.url, data = buffer.tostring())
         except CvBridgeError as e:
@@ -58,7 +58,7 @@ class ImgPostSub(Node):
 
 def main(args = None):
     rclpy.init(args = args)
-    url = "192.168.43.16:5000/"
+    url = "35.245.143.252:80/"
     route = "compressed_image"
     imgPostSub = ImgPostSub(url, route)
 

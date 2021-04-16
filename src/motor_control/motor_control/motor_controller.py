@@ -113,7 +113,7 @@ class MotorSystem():
         for i in range(1, steps+1):
             yield self.curSpeeds + i*inc
 
-    def setSpeed(self, speed, mindiff = 3):
+    def setSpeed(self, speed, mindiff = 30):
         '''
 	Sets the Speed of the robotic system
         

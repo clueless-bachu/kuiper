@@ -11,14 +11,15 @@ import urllib.request
 import requests
 
 # Define the set of actions
+num_steps = 30
 actions = {
-        '87': [100,94, 3],
-        '65': [100,15,3],
-        '68': [15,100,3],
+        '87': [100,94, num_steps],
+        '65': [100,15, num_steps],
+        '68': [15,100,num_steps],
         '83': [0,0,100],
-        '88': [-100, -87, 3],
-        '90': [-100, -15, 3],
-        '67': [-15, -100, 3]
+        '88': [-100, -87, num_steps],
+        '90': [-100, -15, num_steps],
+        '67': [-15, -100, num_steps]
         }
 
 class RobotTeleopPublisher(Node):
@@ -58,7 +59,7 @@ class RobotTeleopPublisher(Node):
 #        url = urllib.request.urlopen(self.url)
         r = requests.get(url = self.url)
         data = str(r.json()['response'])
-        action = [0,0,3]
+        action = [0,0,num_steps]
         
         try:
             action = actions[data]
@@ -79,7 +80,7 @@ def main(args=None):
     # Intializes Node
     rclpy.init(args=args)
     # creates publisher class
-    url = "192.168.43.16:5000/"
+    url = "35.245.143.252:80/"
     route = "key_parser"
     robot_teleop_publisher = RobotTeleopPublisher(url, route)
 
