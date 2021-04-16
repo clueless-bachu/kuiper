@@ -63,10 +63,10 @@ def key_parser():
     Handles API requests by reading the current robot commands from the database and returning a json file
     '''
     try:
-        with open('letter', 'r') as f: 
+        with open('./database/letter', 'r') as f: 
             letter = f.read()
     except:
-        letter = 's'
+        letter = '83' # This means apply brakes
     return jsonify({'response': letter})
 
 
@@ -113,4 +113,6 @@ if __name__ == '__main__':
 
     if os.path.exists("./database/comp_img.npy"):
         os.remove("./database/comp_img.npy")
+    if os.path.exists("./database/letter"):
+        os.remove("./database/letter")
     # host='0.0.0.0', debug = False, port = 80
